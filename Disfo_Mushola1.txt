@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsversion='3' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+<title><data:blog.pageTitle/></title>
+<b:skin><![CDATA[
+/* PREMIUM MOSQUE DIGITA
+   Optimized for TV & Large Screens
+	by : sigerbyte
+*/
+:root {
+    --gold: #d4af37;
+    --white: #ffffff;
+    --glass: rgba(0, 0, 0, 0.5);
+    --border: rgba(212, 175, 55, 0.3);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: #000;
+    color: var(--white);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Background Blur Anti-Silau */
+.bg-container {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), 
+                url('https://images.unsplash.com/photo-1542621334-a254cf47733d?auto=format&fit=crop&w=1920&q=80') center/cover;
+    filter: blur(15px);
+    transform: scale(1.1);
+    z-index: -1;
+}
+
+header {
+    text-align: center;
+    padding: 50px 20px 20px;
+}
+
+header h1 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 5px;
+    color: var(--gold);
+    text-transform: uppercase;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+header p {
+    font-size: 1.3rem;
+    margin: 15px 0 0;
+    opacity: 0.9;
+    letter-spacing: 2px;
+    font-weight: 300;
+}
+
+/* Jam Besar Tengah */
+.main-display {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#clock {
+    font-size: 11rem;
+    font-weight: 700;
+    line-height: 1;
+    margin: 0;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+
+.date-text {
+    font-size: 2.2rem;
+    letter-spacing: 6px;
+    font-weight: 300;
+    color: var(--gold);
+    margin-top: 20px;
+}
+
+/* Jadwal Salat */
+.prayer-row {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    background: var(--glass);
+    backdrop-filter: blur(25px);
+    border-top: 2px solid var(--border);
+    padding: 35px 5%;
+}
+
+.prayer-item {
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+.prayer-item:last-child { border-right: none; }
+
+.prayer-item h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.prayer-item .time {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+/* Running Text */
+.marquee-container {
+    background: var(--gold);
+    color: #000;
+    padding: 12px 0;
+    font-weight: 700;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+}
+
+/* Sembunyikan Section Blogger (Wajib ada satu) */
+.hidden-section {
+    display: none;
+}
+]]></b:skin>
+<link href='https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&amp;display=swap' rel='stylesheet'/>
+</head>
+<body>
+
+<div class='bg-container'/>
+
+<div class='hidden-section'>
+  <b:section id='main-dummy' showaddelement='yes'/>
+</div>
+
+<header>
+    <h1>MUSHOLA AS-SIGRI</h1>
+    <p>Jl. Lintas Sumatera, Tj. Heran, Kec. Penengahan, Kabupaten Lampung Selatan, Lampung 35592</p>
+</header>
+
+<div class='main-display'>
+    <div id='clock'>00:00:00</div>
+    <div class='date-text' id='current-date'>MEMUAT TANGGAL...</div>
+</div>
+
+<div class='prayer-row'>
+    <div class='prayer-item'><h4>Subuh</h4><div class='time'>04:35</div></div>
+    <div class='prayer-item'><h4>Syuruq</h4><div class='time'>05:51</div></div>
+    <div class='prayer-item'><h4>Dzuhur</h4><div class='time'>12:05</div></div>
+    <div class='prayer-item'><h4>Ashar</h4><div class='time'>15:21</div></div>
+    <div class='prayer-item'><h4>Maghrib</h4><div class='time'>18:13</div></div>
+    <div class='prayer-item'><h4>Isya</h4><div class='time'>19:24</div></div>
+</div>
+
+<div class='marquee-container'>
+    <marquee scrollamount='8'>
+        Luruskan dan rapatkan shaf demi kesempurnaan shalat berjamaah. | Mohon non-aktifkan suara handphone saat berada di dalam masjid. | Mari berinfaq untuk pembangunan TPQ melalui kotak amal di pintu utama.
+    </marquee>
+</div>
+
+<script>
+    function updateDisplay() {
+        const now = new Date();
+        
+        // Update Jam (Format 00:00:00)
+        const hours = String(now.getHours()).padStart(2, &#39;0&#39;);
+        const minutes = String(now.getMinutes()).padStart(2, &#39;0&#39;);
+        const seconds = String(now.getSeconds()).padStart(2, &#39;0&#39;);
+        document.getElementById(&#39;clock&#39;).innerText = `${hours}:${minutes}:${seconds}`;
+
+        // Update Tanggal Indonesia
+        const options = { weekday: &#39;long&#39;, year: &#39;numeric&#39;, month: &#39;long&#39;, day: &#39;numeric&#39; };
+        document.getElementById(&#39;current-date&#39;).innerText = now.toLocaleDateString(&#39;id-ID&#39;, options).toUpperCase();
+    }
+
+    setInterval(updateDisplay, 1000);
+    updateDisplay();
+</script>
+
+</body>
+</html>
